@@ -19,9 +19,7 @@ router.get('/', function (req, res) {
             if (doc.length === 0) {
                 res.send({
                     status: "success",
-                    data: {
-                        msg: "暂无新闻分类数据"
-                    }
+                    data: statData
                 })
             } else {
                 doc.forEach((item, index) => {

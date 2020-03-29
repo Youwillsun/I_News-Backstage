@@ -31,7 +31,7 @@ router.post('/', function (req, res) {
                 // 如果查询数据成功,且找到了符合的数据
                 if (doc.length !== 0) {
                     res.send({
-                        status: "success",
+                        status: "error",
                         data: {
                             msg: "此新闻已收藏"
                         }
@@ -120,7 +120,7 @@ router.post('/cancelCollectNews', function (req, res) {
                 // 如果获取到的是空数据
                 if (doc === null) {
                     res.send({
-                        status: "success",
+                        status: "error",
                         data: {
                             msg: "用户未收藏此新闻"
                         }

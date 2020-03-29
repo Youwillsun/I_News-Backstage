@@ -33,7 +33,7 @@ router.post('/login', function (req, res) {
                 // 如果没有查询到此用户
                 if (doc === null) {
                     res.send({
-                        status: 'success',
+                        status: 'error',
                         data: {
                             msg: '此账号未注册'
                         }
@@ -56,7 +56,7 @@ router.post('/login', function (req, res) {
                                 })
                             } else {
                                 res.send({
-                                    msg: 'success',
+                                    status: 'success',
                                     data: {
                                         id: doc._id,
                                         account: req.body.account,
@@ -125,7 +125,7 @@ router.post('/register', function (req, res) {
                         // 如果此用户不在删除状态
                         if (doc.isDel === 0) {
                             res.send({
-                                status: 'success',
+                                status: 'error',
                                 data: {
                                     msg: '此账号已注册'
                                 }

@@ -121,7 +121,7 @@ router.post('/cancelThumbUp', function (req, res) {
                 // 如果数据库中没有用户点赞这条评论的数据
                 if (doc === null) {
                     res.send({
-                        status: "success",
+                        status: "error",
                         data: {
                             msg: "用户未点赞过此评论"
                         }

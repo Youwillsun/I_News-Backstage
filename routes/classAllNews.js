@@ -44,9 +44,7 @@ router.post('/', function (req, res) {
                                 if (data === null) {
                                     res.send({
                                         status: 'success',
-                                        data: {
-                                            msg: '暂无新闻数据'
-                                        }
+                                        data: newsArray
                                     });
                                 } else {
                                     // 信息不是删除状态

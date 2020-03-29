@@ -15,15 +15,13 @@ router.get('/', function (req, res) {
         }
       });
     } else {
+      var newsArray = [];
       if (doc.length === 0) {
         res.send({
           status: 'success',
-          data: {
-            msg: '暂无新闻数据'
-          }
+          data: newsArray
         });
       } else {
-        var newsArray = [];
         doc.forEach(item => {
           newsArray.push({
             newsId: item._id,
@@ -36,9 +34,7 @@ router.get('/', function (req, res) {
         });
         res.send({
           status: 'success',
-          data: {
-            newsArray
-          }
+          data: newsArray
         });
       }
     }
