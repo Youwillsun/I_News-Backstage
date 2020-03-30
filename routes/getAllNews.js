@@ -18,8 +18,10 @@ router.get('/', function (req, res) {
       var newsArray = [];
       if (doc.length === 0) {
         res.send({
-          status: 'success',
-          data: newsArray
+          status: 'error',
+          data: {
+            msg: '暂无新闻数据'
+          }
         });
       } else {
         doc.forEach(item => {

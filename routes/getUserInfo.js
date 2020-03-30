@@ -21,10 +21,20 @@ router.post('/', function (req, res) {
           }
         })
       } else {
-        res.send({
-          status: "success",
-          data: doc
-        })
+        if (doc !== null) {
+          res.send({
+            status: "success",
+            data: doc
+          });
+        } else {
+          res.send({
+            status: "error",
+            data: {
+              msg:"请完善信息"
+            }
+          });
+        }
+
       }
     });
   }

@@ -10,7 +10,7 @@ var newsSchema = mongoose.Schema({
     newsClassId: String, // 新闻类别Id
     newsViewNum: Number, // 新闻浏览量
     newsCollectNum: Number, // 新闻收藏量
-    commentUserId: Array, // 评论用户id
+    commentId: Array, // 评论id
     isDel: { // 是否删除
         type: Number,
         default: 0

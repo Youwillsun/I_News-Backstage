@@ -82,7 +82,7 @@ router.post('/', function (req, res) {
                     });
                 } else {
                     res.send({
-                        status: "success",
+                        status: "error",
                         data: {
                             msg: "此用户已点赞此评论"
                         }
@@ -158,31 +158,41 @@ router.post('/cancelThumbUp', function (req, res) {
                                         }
                                     })
                                 } else {
-                                    // 修改数据
-                                    var clNum = data.commentLikeNum - 1;
-                                    comment.updateOne({
-                                        _id: req.body.commentId
-                                    }, {
-                                        $set: {
-                                            commentLikeNum: clNum
-                                        }
-                                    }, function (err) {
-                                        if (err) {
-                                            res.send({
-                                                status: "error",
-                                                data: {
-                                                    msg: "点赞取消失败"
-                                                }
-                                            })
-                                        } else {
-                                            res.send({
-                                                status: "success",
-                                                data: {
-                                                    msg: "点赞取消成功"
-                                                }
-                                            })
-                                        }
-                                    });
+                                    if (data === null) {
+                                        res.send({
+                                            status: "error",
+                                            data: {
+                                                msg: "点赞取消失败"
+                                            }
+                                        })
+                                    } else {
+                                        // 修改数据
+                                        var clNum = data.commentLikeNum - 1;
+                                        comment.updateOne({
+                                            _id: req.body.commentId
+                                        }, {
+                                            $set: {
+                                                commentLikeNum: clNum
+                                            }
+                                        }, function (err) {
+                                            if (err) {
+                                                res.send({
+                                                    status: "error",
+                                                    data: {
+                                                        msg: "点赞取消失败"
+                                                    }
+                                                })
+                                            } else {
+                                                res.send({
+                                                    status: "success",
+                                                    data: {
+                                                        msg: "点赞取消成功"
+                                                    }
+                                                })
+                                            }
+                                        });
+                                    }
+
                                 }
                             });
                         }

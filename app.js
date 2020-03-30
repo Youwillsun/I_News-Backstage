@@ -32,11 +32,13 @@ var collectNewsRouter = require('./routes/collectNews.js');
 var getUserCollectNewsRouter = require('./routes/getUserCollectNews.js');
 // 点赞新闻
 var thumbUpNewsRouter = require('./routes/thumbUpNews.js');
+//
+var getUserLikeCommentRouter = require('./routes/getUserLikeComment.js');
 
 var app = express();
 
 // 配置全局跨域问题
-app.all('*', function(req, res, next) {
+app.all('*', function (req, res, next) {
   //设为指定的域
   res.header('Access-Control-Allow-Origin', "*");
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -75,8 +77,10 @@ app.use('/newsStatData', newsStatDataRouter);
 app.use('/getuserInfo', getUserInfoRouter);
 // 修改个人信息
 app.use('/updateUserInfo', updateUserInfoRouter);
-// 获取消息通知数据
+// 获取最新未读消息数
 app.use('/getMessageInfo', getMessageInfoRouter);
+// 获取所有消息通知
+app.use('/getMessageInfo/getAllMessage', getMessageInfoRouter);
 // 修改消息通知标识
 app.use('/updateMsgIdentify', updateMsgIdentifyRouter);
 // 发表评论
@@ -91,6 +95,8 @@ app.use('/getUserCollectNews', getUserCollectNewsRouter);
 app.use('/thumbUpNews', thumbUpNewsRouter);
 // 取消评论点赞
 app.use('/thumbUpNews/cancelThumbUp', thumbUpNewsRouter);
+// 获取指定新闻的用户点赞的评论
+app.use('/getUserLikeComment', getUserLikeCommentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

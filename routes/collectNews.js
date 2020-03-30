@@ -156,31 +156,35 @@ router.post('/cancelCollectNews', function (req, res) {
                                         }
                                     })
                                 } else {
-                                    // 收藏量-1
-                                    var ncNum = data.newsCollectNum - 1;
-                                    news.updateOne({
-                                        _id: req.body.newsId
-                                    }, {
-                                        $set: {
-                                            newsCollectNum: ncNum
-                                        }
-                                    }, function (err) {
-                                        if (err) {
-                                            res.send({
-                                                status: "error",
-                                                data: {
-                                                    msg: "收藏取消失败"
-                                                }
-                                            })
-                                        } else {
-                                            res.send({
-                                                status: "success",
-                                                data: {
-                                                    msg: "收藏取消成功"
-                                                }
-                                            })
-                                        }
-                                    });
+                                    if (data !== null) {
+                                        // 收藏量-1
+                                        var ncNum = data.newsCollectNum - 1;
+                                        news.updateOne({
+                                            _id: req.body.newsId
+                                        }, {
+                                            $set: {
+                                                newsCollectNum: ncNum
+                                            }
+                                        }, function (err) {
+                                            if (err) {
+                                                res.send({
+                                                    status: "error",
+                                                    data: {
+                                                        msg: "收藏取消失败"
+                                                    }
+                                                })
+                                            } else {
+                                                res.send({
+                                                    status: "success",
+                                                    data: {
+                                                        msg: "收藏取消成功"
+                                                    }
+                                                })
+                                            }
+                                        });
+                                    } else {
+
+                                    }
                                 }
                             });
 

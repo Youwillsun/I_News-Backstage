@@ -18,8 +18,10 @@ router.get('/', function (req, res) {
             // 获取此类新闻的名称和这类新闻的newsID的数量（即新闻的数量）
             if (doc.length === 0) {
                 res.send({
-                    status: "success",
-                    data: statData
+                    status: "error",
+                    data: {
+                        msg:"暂无新闻分类数据"
+                    }
                 })
             } else {
                 doc.forEach((item, index) => {
