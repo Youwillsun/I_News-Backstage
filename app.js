@@ -16,6 +16,8 @@ var getNewsClassRouter = require('./routes/getNewsClass.js');
 var classAllNewsRouter = require('./routes/classAllNews.js');
 // 获取每一类新闻的数量
 var newsStatDataRouter = require('./routes/newsStatData.js');
+// 发布新闻
+var releaseNewsRouter = require('./routes/releaseNews.js');
 // 获取个人信息
 var getUserInfoRouter = require('./routes/getUserInfo.js');
 // 修改用户信息
@@ -24,6 +26,8 @@ var updateUserInfoRouter = require('./routes/updateUserInfo.js');
 var getMessageInfoRouter = require('./routes/getMessageInfo.js');
 // 修改消息通知标识
 var updateMsgIdentifyRouter = require('./routes/updateMsgIdentify.js');
+// 发布消息
+var releaseMsgRouter = require('./routes/releaseMsg.js');
 // 发表评论
 var publishCommentRouter = require('./routes/publishComment.js');
 // 收藏新闻
@@ -32,7 +36,7 @@ var collectNewsRouter = require('./routes/collectNews.js');
 var getUserCollectNewsRouter = require('./routes/getUserCollectNews.js');
 // 点赞新闻
 var thumbUpNewsRouter = require('./routes/thumbUpNews.js');
-//
+// 获取指定新闻的用户点赞的评论
 var getUserLikeCommentRouter = require('./routes/getUserLikeComment.js');
 
 var app = express();
@@ -73,6 +77,8 @@ app.use('/getNewsClass', getNewsClassRouter);
 app.use('/classAllNews', classAllNewsRouter);
 // 获取每一类新闻的数量 
 app.use('/newsStatData', newsStatDataRouter);
+// 发布新闻
+app.use('/releaseNews', releaseNewsRouter);
 // 获取个人信息
 app.use('/getuserInfo', getUserInfoRouter);
 // 修改个人信息
@@ -83,6 +89,8 @@ app.use('/getMessageInfo', getMessageInfoRouter);
 app.use('/getMessageInfo/getAllMessage', getMessageInfoRouter);
 // 修改消息通知标识
 app.use('/updateMsgIdentify', updateMsgIdentifyRouter);
+// 发布消息
+app.use('/releaseMsg', releaseMsgRouter);
 // 发表评论
 app.use('/publishComment', publishCommentRouter);
 // 收藏新闻
