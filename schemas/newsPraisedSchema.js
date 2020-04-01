@@ -7,7 +7,7 @@ var newsPraised = mongoose.Schema({
     commentId: String,
     likeTime: {
         type: String,
-        default: moment().format('YYYY-MM-DD HH:mm:ss')
+        default: moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
     },
     isDel: {
         type: Number,

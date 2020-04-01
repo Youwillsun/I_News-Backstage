@@ -12,7 +12,7 @@ var commentSchema = mongoose.Schema({
     commentContent: String, // 评论内容
     commentTime: {
         type: String,
-        default: moment().format('YYYY-MM-DD HH:mm:ss')
+        default: moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
     }, // 评论时间
     isDel: { // 是否删除
         type: Number,

@@ -30,6 +30,8 @@ var updateMsgIdentifyRouter = require('./routes/updateMsgIdentify.js');
 var releaseMsgRouter = require('./routes/releaseMsg.js');
 // 发表评论
 var publishCommentRouter = require('./routes/publishComment.js');
+// 获取用户指定评论的id
+var getUserThisCommentRouter = require('./routes/getUserThisComment.js');
 // 收藏新闻
 var collectNewsRouter = require('./routes/collectNews.js');
 // 获取用户收藏的新闻
@@ -93,6 +95,8 @@ app.use('/updateMsgIdentify', updateMsgIdentifyRouter);
 app.use('/releaseMsg', releaseMsgRouter);
 // 发表评论
 app.use('/publishComment', publishCommentRouter);
+// 获取用户指定评论的id
+app.use('/getUserThisComment', getUserThisCommentRouter);
 // 收藏新闻
 app.use('/collectNews', collectNewsRouter);
 // 取消收藏新闻

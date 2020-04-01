@@ -7,7 +7,7 @@ var newsSchema = mongoose.Schema({
     newsSource: String, // 新闻来源
     newsTime: { // 新闻发布时间
         type: String,
-        default: moment().format('YYYY-MM-DD')
+        default: moment(new Date()).format('YYYY-MM-DD')
     },
     newsThumbnail: String, // 新闻缩略图
     newsContent: String, // 新闻内容

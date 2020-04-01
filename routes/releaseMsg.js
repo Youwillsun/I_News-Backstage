@@ -22,7 +22,7 @@ router.post('/', function (req, res) {
                 })
             } else {
                 res.send({
-                    status: "error",
+                    status: "success",
                     data: {
                         msg: "消息通知发布成功"
                     }

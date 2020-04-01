@@ -6,7 +6,7 @@ var newsCollection = mongoose.Schema({
     newsId: String, // 此用户收藏的新闻
     collectTime: { // 收藏时间
         type: String,
-        default: moment().format('YYYY-MM-DD HH:mm:ss')
+        default: moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
     },
     isDel: {
         type: Number,
