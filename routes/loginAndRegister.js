@@ -39,12 +39,13 @@ router.post('/login', function (req, res) {
                         }
                     });
                 } else {
+                    // 获取本机ip
+                    let remoteIp = getIPAdress();
                     // 判断账号和密码与数据库中的是否相同
                     if (doc.account === req.body.account && doc.password === req.body.password) {
                         var loginInfo = {
                             userId: doc._id, // 用户id
-                            loginTime: new Date(), // 登录时间
-                            loginLocation: '暂无', // 登录地点
+                            loginLocation: remoteIp, // 登录地点
                         }
                         loginLog.create(loginInfo, function (err) {
                             if (err) {
@@ -90,6 +91,8 @@ router.post('/register', function (req, res) {
             }
         })
     } else {
+        // 获取本机ip
+        let remoteIp = getIPAdress();
         // 账号判断是否合法
         var phoneRegExp = new RegExp('^[0-9]{11}$');
         // 密码判断是否合法
@@ -100,13 +103,8 @@ router.post('/register', function (req, res) {
             var registerInfo = {
                 userAccount: req.body.account,
                 userPassword: req.body.password,
-                registerTime: new Date(),
-                registerLocation: '暂无'
+                registerLocation: remoteIp
             }
-
-            // 获取本机ip
-            // let remoteIp = getIPAdress();
-            // 获取当前位置
 
             // 查询数据库中是否有此账号
             user.findOne({

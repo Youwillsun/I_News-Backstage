@@ -9,7 +9,10 @@ var userSchema = mongoose.Schema({
     weChatNumber: String, // 微信号
     phone: String, // 手机号
     birthday: String, // 出生日期
-    personalityLabel: String, // 个性标签
+    personalityLabel: { // 个性标签
+        type: String,
+        default: '发呆'
+    },
     introduction: String, // 个人简介
     userPhoto: String, // 用户头像
     isDel: { // 用户是否删除，默认为0，未删除
