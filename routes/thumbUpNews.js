@@ -84,7 +84,7 @@ router.post('/', function (req, res) {
                     res.send({
                         status: "error",
                         data: {
-                            msg: "此用户已点赞此评论"
+                            msg: "您已点赞此评论"
                         }
                     })
                 }

@@ -34,19 +34,10 @@ router.get('/getAllMessage', function (req, res) {
                 }
             })
         } else {
-            if (doc.length === 0) {
-                res.send({
-                    status: "success",
-                    data: {
-                        msg: "暂无消息数据"
-                    }
-                })
-            } else {
-                res.send({
-                    status: "success",
-                    data: doc
-                });
-            }
+            res.send({
+                status: "success",
+                data: doc
+            });
         }
     });
 });
