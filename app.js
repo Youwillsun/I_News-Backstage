@@ -22,6 +22,8 @@ var releaseNewsRouter = require('./routes/releaseNews.js');
 var getUserInfoRouter = require('./routes/getUserInfo.js');
 // 修改用户信息
 var updateUserInfoRouter = require('./routes/updateUserInfo.js');
+// 找回密码
+var updatedPwdRouter = require('./routes/updatedPwd.js');
 // 获取消息通知数据
 var getMessageInfoRouter = require('./routes/getMessageInfo.js');
 // 修改消息通知标识
@@ -87,6 +89,8 @@ app.use('/releaseNews', releaseNewsRouter);
 app.use('/getuserInfo', getUserInfoRouter);
 // 修改个人信息
 app.use('/updateUserInfo', updateUserInfoRouter);
+// 找回密码
+app.use('/updatedPwd', updatedPwdRouter);
 // 获取最新未读消息数
 app.use('/getMessageInfo', getMessageInfoRouter);
 // 获取所有消息通知
