@@ -50,32 +50,41 @@ router.post('/', function (req, res) {
                                         }
                                     })
                                 } else {
-                                    var likeNum = doc.commentLikeNum + 1;
-                                    // 修改点赞数量
-                                    comment.updateOne({
-                                        _id: req.body.commentId
-                                    }, {
-                                        $set: {
-                                            commentLikeNum: likeNum
-                                        }
-                                    }, function (err) {
-                                        if (err) {
-                                            res.send({
-                                                status: "error",
-                                                data: {
-                                                    msg: "点赞失败"
-                                                }
-                                            })
-                                        } else {
-                                            // 修改成功
-                                            res.send({
-                                                status: "success",
-                                                data: {
-                                                    msg: "点赞成功"
-                                                }
-                                            });
-                                        }
-                                    });
+                                    if (doc === null) {
+                                        res.send({
+                                            status: "error",
+                                            data: {
+                                                msg: "评论不存在"
+                                            }
+                                        })
+                                    } else {
+                                        var likeNum = doc.commentLikeNum + 1;
+                                        // 修改点赞数量
+                                        comment.updateOne({
+                                            _id: req.body.commentId
+                                        }, {
+                                            $set: {
+                                                commentLikeNum: likeNum
+                                            }
+                                        }, function (err) {
+                                            if (err) {
+                                                res.send({
+                                                    status: "error",
+                                                    data: {
+                                                        msg: "点赞失败"
+                                                    }
+                                                })
+                                            } else {
+                                                // 修改成功
+                                                res.send({
+                                                    status: "success",
+                                                    data: {
+                                                        msg: "点赞成功"
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
                                 }
                             });
                         }
@@ -94,7 +103,7 @@ router.post('/', function (req, res) {
 });
 
 // 取消点赞
-router.post('/cancelThumbUp', function (req, res) {
+router.post('/cancelLike', function (req, res) {
     // 如果传输的值为空
     if (!req.body.userId || !req.body.newsId || !req.body.commentId) {
         res.send({

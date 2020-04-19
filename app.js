@@ -10,6 +10,8 @@ var loginAndRegisterRouter = require('./routes/loginAndRegister.js');
 var getAllNewsRouter = require('./routes/getAllNews.js');
 // 获取新闻详情
 var getNewsDetailRouter = require('./routes/getNewsDetail.js');
+// 增加新闻浏览量
+var addNewsViewRouter = require('./routes/addNewsView.js');
 // 获取新闻分类
 var getNewsClassRouter = require('./routes/getNewsClass.js');
 // 获取此类别新闻数据
@@ -38,8 +40,8 @@ var getUserThisCommentRouter = require('./routes/getUserThisComment.js');
 var collectNewsRouter = require('./routes/collectNews.js');
 // 获取用户收藏的新闻
 var getUserCollectNewsRouter = require('./routes/getUserCollectNews.js');
-// 点赞新闻
-var thumbUpNewsRouter = require('./routes/thumbUpNews.js');
+// 点赞评论
+var likeCommentsRouter = require('./routes/likeComments.js');
 // 获取指定新闻的用户点赞的评论
 var getUserLikeCommentRouter = require('./routes/getUserLikeComment.js');
 
@@ -77,6 +79,8 @@ app.use('/loginAndRegister', loginAndRegisterRouter);
 app.use('/getAllNews', getAllNewsRouter);
 // 获取新闻详情
 app.use('/getNewsDetail', getNewsDetailRouter);
+// 增加新闻浏览量
+app.use('/addNewsView', addNewsViewRouter);
 // 获取新闻分类
 app.use('/getNewsClass', getNewsClassRouter);
 // 获取此类别新闻数据
@@ -110,9 +114,9 @@ app.use('/collectNews/cancelCollectNews', collectNewsRouter);
 // 获取用户收藏的新闻
 app.use('/getUserCollectNews', getUserCollectNewsRouter);
 // 点赞新闻评论
-app.use('/thumbUpNews', thumbUpNewsRouter);
+app.use('/likeComments', likeCommentsRouter);
 // 取消评论点赞
-app.use('/thumbUpNews/cancelThumbUp', thumbUpNewsRouter);
+app.use('/likeComments/cancelLike', likeCommentsRouter);
 // 获取指定新闻的用户点赞的评论
 app.use('/getUserLikeComment', getUserLikeCommentRouter);
 

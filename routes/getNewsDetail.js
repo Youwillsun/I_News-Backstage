@@ -38,20 +38,12 @@ router.post('/', function (req, res) {
                         }
                     })
                 } else {
-                    // 把浏览量+1
-                    doc.newsViewNum = doc.newsViewNum + 1;
-                    // 把修改的浏览量设置到数据库
-                    news.updateOne({
-                        _id: req.body.newsId
-                    }, {
-                        $set: {
-                            newsViewNum: doc.newsViewNum
-                        }
-                    });
                     // 把获取的信息转成普通的object
                     var docObj = doc.toObject();
                     // 删除新闻中的评论用户id
                     delete docObj.commentId;
+                    // 删除新闻中的浏览量，浏览量有单独的接口
+                    delete docObj.newsViewNum;
                     // 存储信息
                     newsDetail.newsInfo = docObj;
                     // 如果没有评论用户的id数据
